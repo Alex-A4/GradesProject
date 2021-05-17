@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grades_app/grade-14/bloc/ui/counter_screen.dart';
+import 'package:grades_app/grade-14/native_view/display_mode.dart';
+import 'package:grades_app/grade-14/native_view/hybrid_mode.dart';
+import 'package:grades_app/grade-14/native_view/native_widget_screen.dart';
 
 const kRoot = '/';
 const kBlocPath = '/bloc';
+const kNativeWidget = '/native';
+const kNativeHybrid = '/native/hybrid';
+const kNativeVirtual = '/native/virtual';
 
 void main() {
   runApp(MaterialApp(
@@ -11,6 +17,9 @@ void main() {
     routes: {
       kRoot: (_) => GradesRoot(),
       kBlocPath: (_) => CounterScreen(),
+      kNativeWidget: (_) => NativeWidgetScreen(),
+      kNativeVirtual: (_) => NativeWidgetVirtualDisplay(),
+      kNativeHybrid: (_) => NativeWidgetHybrid(),
     },
   ));
 }
@@ -33,7 +42,7 @@ class GradesRoot extends StatelessWidget {
               child: Text('Счетчик на блоке, 14 грейд'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushNamed(kNativeWidget),
               child: Text('Нативный виджет, 14 грейд'),
             ),
           ],
