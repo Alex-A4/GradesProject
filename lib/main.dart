@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grades_app/grade-13/redux/ui/redux_screen.dart';
 import 'package:grades_app/grade-14/bloc/ui/counter_screen.dart';
 import 'package:grades_app/grade-14/native_view/display_mode.dart';
 import 'package:grades_app/grade-14/native_view/hybrid_mode.dart';
@@ -10,6 +11,8 @@ const kNativeWidget = '/native';
 const kNativeHybrid = '/native/hybrid';
 const kNativeVirtual = '/native/virtual';
 
+const kReduxCounter = '/redux';
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -20,6 +23,7 @@ void main() {
       kNativeWidget: (_) => NativeWidgetScreen(),
       kNativeVirtual: (_) => NativeWidgetVirtualDisplay(),
       kNativeHybrid: (_) => NativeWidgetHybrid(),
+      kReduxCounter: (_) => ReduxScreen(),
     },
   ));
 }
@@ -44,6 +48,10 @@ class GradesRoot extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pushNamed(kNativeWidget),
               child: Text('Нативный виджет, 14 грейд'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed(kReduxCounter),
+              child: Text('Счетчик на редаксе, 13 грейд'),
             ),
           ],
         ),
